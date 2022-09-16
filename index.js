@@ -3,7 +3,38 @@ const context = canvas.getContext("2d");
 
 canvas.width = 1024;
 canvas.height = 550;
-context.fillRect(0, 0, canvas.width, canvas.height);
+
+const collisionMap = [];
+for (let i = 0; i < collisions.length; i += 70) {
+  collisionMap.push(collisions.slice(i, i + 70));
+}
+
+class Boundary {
+  constructor({ position }) {
+    this.position = position;
+    this.width = 48;
+    this.height = 48;
+  }
+  draw() {
+    context.fillStyle = "red";
+    context.fillRect(this.position.x, this.position.y, this.width, this.height);
+  }
+}
+
+const boundaries = [];
+
+collisionMap.forEach((row, i) => {
+  row.forEach((symbol, j) => {
+    boundaries.push(
+      new Boundary({
+        position: {
+          x: j * 48,
+          y: i * 48,
+        },
+      })
+    );
+  });
+});
 
 const image = new Image();
 image.src = "./assets/Pellet Town.png";
@@ -21,7 +52,7 @@ class Sprite {
   }
 }
 
-const background = new Sprite({ position: { x: -740, y: -650 }, image: image });
+const background = new Sprite({ position: { x: -500, y: -700 }, image: image });
 const keys = {
   w: {
     pressed: false,
