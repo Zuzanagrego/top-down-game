@@ -1,0 +1,14 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000;
+  width: 100%;
+  margin: 0 auto;
+}
