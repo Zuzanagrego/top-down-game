@@ -33,6 +33,7 @@ const image = new Image();
 image.src = "./assets/Pellet Town.png";
 
 const foregroundImage = new Image();
+
 foregroundImage.src = "./assets/foreground.png";
 
 const playerImage = new Image();
